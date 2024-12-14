@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, View, Text } from "react-native";
 import MapView, { Callout, Marker } from "react-native-maps";
 import * as Location from 'expo-location';
+import { router, Router } from "expo-router";
 
 import { api } from "@/services/api";
 import { fontFamily, colors } from "@/styles/theme"
@@ -110,7 +111,7 @@ export default function Home() {
                   }}
                   image={require("@/assets/pin.png")}
                 >
-                  <Callout>
+                  <Callout onPress={() => router.navigate(`/market/${item.id}`) }>
                     <View>
                       <Text style={{ fontSize: 14, color: colors.gray[600], fontFamily: fontFamily.medium }}>{item.name}</Text>
                       <Text style={{ fontSize: 13, color: colors.gray[600], fontFamily: fontFamily.regular }}>{item.address}</Text>
